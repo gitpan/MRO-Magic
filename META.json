@@ -1,0 +1,22 @@
+{
+   "resources" : {
+      "repository" : "http://github.com/rjbs/mro-magic/tree"
+   },
+   "meta-spec" : {
+      "version" : 1.4,
+      "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
+   },
+   "generated_by" : "Dist::Zilla::Plugin::MetaJSON version 1.091440",
+   "version" : "0.091450",
+   "name" : "MRO-Magic",
+   "author" : [
+      "Ricardo SIGNES <rjbs@cpan.org>"
+   ],
+   "license" : "perl",
+   "requires" : {
+      "Scalar::Util" : "0",
+      "MRO::Define" : "0.01",
+      "Variable::Magic" : "0.28"
+   },
+   "abstract" : "write your own method dispatcher"
+}
