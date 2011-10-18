@@ -1,6 +1,7 @@
 package MRO::Magic;
-our $VERSION = '0.091450';
-
+{
+  $MRO::Magic::VERSION = '0.100000';
+}
 use 5.010; # uvar magic does not work prior to version 10
 use strict;
 use warnings;
@@ -109,7 +110,6 @@ sub _gen_fetch_magic {
 1;
 
 __END__
-
 =pod
 
 =head1 NAME
@@ -118,7 +118,7 @@ MRO::Magic - write your own method dispatcher
 
 =head1 VERSION
 
-version 0.091450
+version 0.100000
 
 =head1 WARNING
 
@@ -139,18 +139,18 @@ B<You have been warned!>
 
 First you write a method dispatcher.
 
-    package MRO::Classless;
-    use MRO::Magic
-      metamethod => \'invoke_method',
-      passthru   => [ qw(VERSION import unimport DESTROY) ];
+  package MRO::Classless;
+  use MRO::Magic
+    metamethod => \'invoke_method',
+    passthru   => [ qw(VERSION import unimport DESTROY) ];
 
-    sub invoke_method {
-      my ($invocant, $method_name, $args) = @_;
+  sub invoke_method {
+    my ($invocant, $method_name, $args) = @_;
 
-      ...
+    ...
 
-      return $rv;
-    }
+    return $rv;
+  }
 
 In a class using this dispatcher, any method not in the passthru specification
 is redirected to C<invoke_method>, which can do any kind of ridiculous thing it
@@ -158,42 +158,41 @@ wants.
 
 Now you use the dispatcher:
 
-    package MyDOM;
-    use MRO::Classless;
-    use mro 'MRO::Classless';
-    1;
+  package MyDOM;
+  use MRO::Classless;
+  use mro 'MRO::Classless';
+  1;
 
 ...and...
 
-    use MyDOM;
+  use MyDOM;
 
-    my $dom = MyDOM->new(type => 'root');
+  my $dom = MyDOM->new(type => 'root');
 
 The C<new> call will actually result in a call to C<invoke_method> in the form:
 
-    invoke_method('MyDOM', 'new', [ type => 'root' ]);
+  invoke_method('MyDOM', 'new', [ type => 'root' ]);
 
 Assuming it returns an object blessed into MyDOM, then:
 
-    $dom->children;
+  $dom->children;
 
 ...will redispatch to:
 
-    invoke_method($dom, 'children', []);
+  invoke_method($dom, 'children', []);
 
 For examples of more practical use, look at the test suite.
 
 =head1 AUTHOR
 
-  Ricardo SIGNES <rjbs@cpan.org>
+Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo SIGNES.
+This software is copyright (c) 2011 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 

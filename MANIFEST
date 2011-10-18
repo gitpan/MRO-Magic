@@ -1,6 +1,8 @@
+Changes
 LICENSE
 MANIFEST
 META.json
+META.yml
 Makefile.PL
 README
 dist.ini
@@ -16,3 +18,4 @@ t/lib/ClassUMS.pm
 t/lib/Instance.pm
 t/misc-errors.t
 t/overloads.t
+t/release-pod-syntax.t
