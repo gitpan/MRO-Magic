@@ -1,6 +1,6 @@
 package MRO::Magic;
 {
-  $MRO::Magic::VERSION = '0.100000';
+  $MRO::Magic::VERSION = '0.100001';
 }
 use 5.010; # uvar magic does not work prior to version 10
 use strict;
@@ -110,6 +110,7 @@ sub _gen_fetch_magic {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -118,7 +119,7 @@ MRO::Magic - write your own method dispatcher
 
 =head1 VERSION
 
-version 0.100000
+version 0.100001
 
 =head1 WARNING
 
@@ -189,10 +190,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
